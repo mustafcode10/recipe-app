@@ -1,18 +1,28 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { RecipeCard } from "./RecipeCard";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function Recipes() {
-  const { category } = useParams();
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { category } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
       .then(response => response.json())
-      .then(data => setRecipes(data.meals))
-      .catch(error => console.error("Error:", error))
+      .then(data => {
+        if (data.meals) {
+          setRecipes(data.meals);
+        } else {
+          throw new Error("Category not found!");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        navigate("/404");
+      })
       .finally(() => setIsLoading(false));
   }, [category]);
 

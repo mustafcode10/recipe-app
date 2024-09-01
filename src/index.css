@@ -26,9 +26,13 @@ nav a:hover, nav a.active {
   color: #cc49a0;
 }
 
+.title {
+  text-decoration: none;
+}
+
 .container {
   width: 90%;
-  max-width: 1150px;
+  max-width: 1050px;
   margin: 1.1em auto;
 }
 
@@ -74,6 +78,7 @@ h1 {
 }
 
 h2 {
+  font-size: 2rem;
   margin-bottom: auto;
   line-height: 1.2;
   margin-top: 0;
@@ -101,7 +106,8 @@ h3 {
 
 p {
   color: #222;
-  font-size: 1em;
+  font-size: 1.25rem;
+  line-height: 1.5;
   margin-bottom: 0;
 }
 
@@ -150,8 +156,14 @@ label {
 }
 
 select {
+  width: 80%;
+  font-size: 1.25rem;
   padding: 0.35em;
-  margin-top: 1.35em;
+  margin-top: 0;
   border-color: #d1d1d1;
-  border-radius: 3px;
+  border-radius: 5px;
+}
+
+.not-found {
+  text-align: center;
 }

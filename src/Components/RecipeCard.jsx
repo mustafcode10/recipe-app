@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
 import RecipeRating from "./RecipeRating";
+import { Link } from "react-router-dom";
 
 export function RecipeCard({ data }) {
   return (
     <div className="card">
-      <NavLink to={`${data.idMeal}`}>
+      <Link to={data.idMeal}>
         <div>
           <img
             src={data.strMealThumb}
@@ -13,7 +13,7 @@ export function RecipeCard({ data }) {
           />
         </div>
         <h2>{data.strMeal}</h2>
-      </NavLink>
+      </Link>
       <RecipeRating />
     </div>
   );

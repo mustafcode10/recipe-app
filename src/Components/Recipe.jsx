@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Recipe() {
   const { recipeID } = useParams();
@@ -9,8 +9,9 @@ export default function Recipe() {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeID}`)
       .then(response => response.json())
       .then(data => setRecipe(data.meals[0]))
-      .catch(error => console.error("Error:", error));
+      .catch(error => console.error("Error: ", error));
   }, []);
+
   return (
     <div className="container recipe">
       <h2>{recipe.strMeal}</h2>
